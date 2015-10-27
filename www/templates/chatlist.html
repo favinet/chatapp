@@ -1,0 +1,39 @@
+<ion-view view-title="Chat">
+<ion-pane ng-controller="CardsCtrl" view-title="Chat">
+     <ion-header-bar class="bar bar-header bar-calm">
+          <h1 class="title">Chat</h1>
+    </ion-header-bar>  
+     <td-cards>
+
+        <td-card ng-repeat="card in cards" on-destroy="cardDestroyed($index)" on-swipe-left="cardSwipedLeft($index)" on-swipe-right="cardSwipedRight($index)" on-swipe-down="cardSwipedDown($index)" on-partial-swipe="cardPartialSwipe(amt)" class="card-{{$index}}" ng-scroll="false">
+        
+          <div ng-model="ndata.nid" ng-if="card.user == ndata.nid">
+            <ion-header-bar class="bar bar-header bar-calm">
+              <h1 class="title">{{card.user}}</h1>
+            </ion-header-bar>  
+          </div>
+
+          <div ng-model="ndata.nid" ng-if="card.user != ndata.nid">
+            <ion-header-bar class="bar bar-header bar-assertive">
+              <h1 class="title">{{card.user}}</h1>
+            </ion-header-bar>  
+          </div>
+          
+          <ion-content> 
+          
+          <div ng-controller="CardCtrl" class = "msg">
+            <textarea type= "text" name = "msg" focus-me="focusInput" style="overflow:hidden">{{card.msg}}</textarea>             
+          </div>
+          
+          </ion-content>
+          <ion-footer-bar class="button-bar" style= "margin-bottom:10px;"> 
+            <div style = "text-align:center;width:300px;" ng-model="btn.show" ng-show="btn.show">
+             <button class="button button-positive button-full" ng-click="goReply($index)">답장</button>
+
+              <!--<button class="button button-positive" ng-click="cardSwipedDown($index)" style="float:right;">다음</button>-->
+            </div>          
+          </ion-footer-bar>      
+        </td-card>
+      </td-cards>
+  </ion-pane>
+</ion-view>

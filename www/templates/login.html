@@ -1,0 +1,37 @@
+
+<ion-view view-title="Login">
+  <ion-header-bar class="bar bar-header bar-calm">
+          <h1 class="title">Login</h1>
+  </ion-header-bar>       
+  <ion-content>
+   <form ng-submit="signIn(authorizationForm)" name="authorizationForm">
+    <div class="list">       
+      <label class="item item-input" ng-class="{ 'has-errors' : authorizationForm.user.$invalid, 'no-errors' : authorizationForm.user.$valid}">
+          <span class="input-label">대화명</span>
+          <input type="text" placeholder="대화명입력" name = "user" ng-model="data.user" ng-minlength="3" ng-maxlength="5" required> 
+      </label>
+      <div class="error-container" ng-show="authorizationForm.user.$error" ng-messages="authorizationForm.user.$error">
+        <div ng-messages-include="error-list.html"></div>
+      </div>
+    </div>
+    <button class="button button-full button-positive" type="submit">
+      입장
+    </button>
+  </form>
+  
+  </ion-content>
+</ion-view>
+  <script id="error-list.html" type="text/ng-template">  
+    <div class="error" ng-message="required">
+      <i class="ion-information-circled"></i> 
+      <span style = "font-size:1.5em;margin-top:5px;">대화명을 입력하세요!</span>
+    </div>
+    <div class="error" ng-message="minlength">
+      <i class="ion-information-circled"></i> 
+      <span style = "font-size:1.5em;margin-top:5px;">최소 3자 최대 5자 사이로 입력하세요!</span>
+    </div>
+    <div class="error" ng-message="maxlength">
+      <i class="ion-information-circled"></i> 
+      <span style = "font-size:1.5em;margin-top:5px;">5자 이하로 입력하세요!</span>
+    </div>
+  </script>
