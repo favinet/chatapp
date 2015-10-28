@@ -501,7 +501,7 @@ app.controller('CardsCtrl', ['$scope', '$http', '$state', '$rootScope', '$timeou
 
 app.controller('CardCtrl', function($scope, TDCardDelegate) {
 
-  $scope.ndata.nid = '2222';
+  
   
   $scope.cardSwipedLeft = function(index) {   
     $scope.addCard();
